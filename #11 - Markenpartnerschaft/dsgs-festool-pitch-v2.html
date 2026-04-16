@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSGS × Festool — Kurspark Wien</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap');
+
+  :root {
+    --black:  #0f0f0f;
+    --white:  #f5f2ee;
+    --green:  #00a651;
+    --red:    #c8102e;
+    --mid:    #6b6560;
+    --light:  #e8e4df;
+    --green-bg: #00a651;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #ccc;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 12mm 15mm 10mm 15mm;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    padding-bottom: 9px;
+    border-bottom: 3px solid var(--black);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand-dsgs {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30pt;
+    color: var(--black);
+    line-height: 1;
+    letter-spacing: 0.03em;
+  }
+  .brand-x {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22pt;
+    color: var(--mid);
+    line-height: 1;
+  }
+  .brand-festool {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30pt;
+    color: var(--green);
+    line-height: 1;
+    letter-spacing: 0.03em;
+  }
+  .header-meta {
+    text-align: right;
+    font-size: 8pt;
+    color: var(--mid);
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .header-meta strong {
+    color: var(--black);
+    font-weight: 600;
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 7pt;
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--black);
+    color: var(--white);
+    padding: 13px 18px 13px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 5px; height: 100%;
+    background: var(--green);
+  }
+  .hero-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 7pt;
+    color: var(--green);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .hero-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16.5pt;
+    letter-spacing: 0.03em;
+    line-height: 1.12;
+    max-width: 88%;
+  }
+  .hero-sub {
+    font-size: 8.5pt;
+    color: #a09890;
+    margin-top: 7px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.45;
+  }
+
+  /* ── REEL STATS ── */
+  .reel-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) auto;
+    gap: 7px;
+    align-items: stretch;
+  }
+  .reel-stat {
+    background: var(--black);
+    color: var(--white);
+    padding: 8px 10px;
+    position: relative;
+  }
+  .reel-stat::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--green);
+  }
+  .reel-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 17pt;
+    color: var(--green);
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .reel-label {
+    font-size: 7pt;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-top: 2px;
+    line-height: 1.3;
+  }
+  .reel-qr {
+    background: white;
+    border: 1.5px solid var(--light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    min-width: 70px;
+  }
+  .qr-box {
+    width: 44px;
+    height: 44px;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .qr-inner {
+    /* Simple QR placeholder pattern */
+    width: 38px;
+    height: 38px;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        var(--green) 3px,
+        var(--green) 4px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 3px,
+        var(--green) 3px,
+        var(--green) 4px
+      );
+    opacity: 0.4;
+  }
+  .qr-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 6pt;
+    color: var(--mid);
+    text-align: center;
+    margin-top: 3px;
+    line-height: 1.3;
+    letter-spacing: 0.03em;
+  }
+  .reel-caption {
+    font-family: 'DM Mono', monospace;
+    font-size: 6.5pt;
+    color: var(--mid);
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── SECTION TITLE ── */
+  .sec-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11.5pt;
+    letter-spacing: 0.07em;
+    color: var(--black);
+    border-bottom: 1.5px solid var(--light);
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+  }
+  .sec-title span { color: var(--green); }
+
+  /* ── KURSPARK MAIN ── */
+  .kurspark-block {
+    background: var(--green);
+    color: white;
+    padding: 12px 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  .kurspark-left {}
+  .kurspark-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15pt;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .kurspark-desc {
+    font-size: 8.5pt;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.5;
+  }
+  .kurspark-desc em {
+    font-style: normal;
+    font-weight: 600;
+    color: white;
+  }
+  .kurspark-right {}
+  .kurspark-list-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 9pt;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 5px;
+  }
+  .device-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px 10px;
+  }
+  .device-item {
+    font-size: 8pt;
+    color: white;
+    padding: 2px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .device-item .qty {
+    font-family: 'DM Mono', monospace;
+    font-size: 7pt;
+    color: rgba(255,255,255,0.6);
+    white-space: nowrap;
+    margin-left: 6px;
+  }
+
+  /* ── TWO COL ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  /* ── REACH TABLE ── */
+  .reach-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.5pt;
+  }
+  .reach-table th {
+    font-family: 'DM Mono', monospace;
+    font-size: 7pt;
+    color: var(--mid);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: left;
+    padding: 3px 6px 3px 0;
+    border-bottom: 1.5px solid var(--black);
+    font-weight: 400;
+  }
+  .reach-table td {
+    padding: 4px 6px 4px 0;
+    border-bottom: 1px solid var(--light);
+    vertical-align: top;
+  }
+  .reach-table td:last-child {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 8pt;
+    color: var(--mid);
+  }
+  .reach-table .big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13pt;
+    color: var(--green);
+    line-height: 1;
+  }
+  .reach-table .platform {
+    font-weight: 500;
+    font-size: 8.5pt;
+  }
+  .reach-total td {
+    border-top: 2px solid var(--black);
+    border-bottom: none;
+    padding-top: 5px;
+    font-weight: 600;
+  }
+
+  /* ── GENDER BLOCK ── */
+  .gender-box {
+    border: 1.5px solid var(--light);
+    padding: 9px 11px;
+    height: 100%;
+  }
+  .gender-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 10pt;
+    letter-spacing: 0.07em;
+    margin-bottom: 8px;
+    color: var(--black);
+  }
+  .gender-row {
+    margin-bottom: 9px;
+  }
+  .gender-platform {
+    font-family: 'DM Mono', monospace;
+    font-size: 7pt;
+    color: var(--mid);
+    letter-spacing: 0.05em;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+  }
+  .gender-bars {
+    display: flex;
+    height: 10px;
+    border-radius: 1px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bar-f { background: var(--red); }
+  .bar-m { background: var(--black); }
+  .gender-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 7.5pt;
+    color: var(--mid);
+    margin-top: 2px;
+  }
+  .gender-insight {
+    background: var(--black);
+    color: var(--white);
+    padding: 7px 9px;
+    margin-top: 7px;
+    font-size: 8pt;
+    line-height: 1.4;
+  }
+  .gender-insight strong {
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  /* ── LIVE TOUCHPOINTS ── */
+  .live-box {
+    border-left: 3px solid var(--green);
+    padding: 7px 10px;
+    background: var(--light);
+    margin-top: 8px;
+  }
+  .live-box .big-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24pt;
+    color: var(--black);
+    line-height: 1;
+  }
+  .live-box .live-label {
+    font-size: 7.5pt;
+    color: var(--mid);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 1px;
+    line-height: 1.3;
+  }
+  .live-detail {
+    font-size: 8pt;
+    color: var(--mid);
+    margin-top: 6px;
+    line-height: 1.45;
+  }
+  .live-detail strong { color: var(--black); }
+
+  /* ── CREDENTIALS BAR ── */
+  .cred-bar {
+    display: flex;
+    gap: 7px;
+    align-items: stretch;
+  }
+  .cred-item {
+    flex: 1;
+    border: 1.5px solid var(--light);
+    border-left: 3px solid var(--black);
+    padding: 7px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .cred-item.green { border-left-color: var(--green); }
+  .cred-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 6.5pt;
+    color: var(--mid);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .cred-value {
+    font-size: 8.5pt;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.3;
+  }
+  .cred-sub {
+    font-size: 7.5pt;
+    color: var(--mid);
+    line-height: 1.3;
+    margin-top: 1px;
+  }
+
+  /* ── OFFER TIERS ── */
+  .tiers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+  }
+  .tier {
+    border: 1.5px solid var(--light);
+    padding: 9px 11px;
+    position: relative;
+  }
+  .tier-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 7pt;
+    color: var(--mid);
+    letter-spacing: 0.08em;
+    margin-bottom: 3px;
+  }
+  .tier-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11pt;
+    letter-spacing: 0.04em;
+    color: var(--black);
+    border-bottom: 2px solid var(--green);
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+  .tier-desc {
+    font-size: 8pt;
+    color: var(--mid);
+    line-height: 1.45;
+  }
+  .tier-desc strong { color: var(--black); font-weight: 600; }
+  .tier.featured {
+    border-color: var(--green);
+    border-width: 2px;
+  }
+  .tier.featured .tier-num { color: var(--green); }
+
+  /* ── WHO WE ARE ── */
+  ul.clean {
+    list-style: none;
+    padding: 0;
+  }
+  ul.clean li {
+    padding: 2.5px 0 2.5px 13px;
+    position: relative;
+    font-size: 8.5pt;
+    color: var(--black);
+    line-height: 1.4;
+  }
+  ul.clean li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-size: 8.5pt;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: auto;
+    padding-top: 9px;
+    border-top: 1.5px solid var(--light);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 16px;
+  }
+  .footer-contact {
+    font-size: 8.5pt;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+  .footer-contact strong { color: var(--black); font-weight: 600; }
+  .footer-cta {
+    background: var(--black);
+    color: var(--white);
+    padding: 9px 16px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11pt;
+    letter-spacing: 0.1em;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .footer-cta span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 7.5pt;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: #aaa;
+    margin-top: 2px;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; width: 100%; min-height: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand">
+      <div class="brand-dsgs">DSGS</div>
+      <div class="brand-x">×</div>
+      <div class="brand-festool">Festool</div>
+    </div>
+    <div class="header-meta">
+      Partnerschaftsangebot · Wien, April 2026
+      <strong>dosomethinggreat.work · @dosomethinggreat_society</strong>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label">Warum wir reden sollten</div>
+    <div class="hero-text">Das meistgesehene Video unserer Geschichte zeigt eine Festool Domino in Aktion. 1.304.204 Aufrufe. Kein Budget. Kein Deal. Kein Auftrag. Einfach weil das Werkzeug so gut ist, dass die Leute hinschauen. Jetzt schauen wir auf euch.</div>
+    <div class="hero-sub">DO SOMETHING GREAT Society — 800 m² Co-Working-Holzwerkstatt & Tischlerkurse, Wien 1170. Gegründet aus der Überzeugung: Wer einmal selbst etwas baut, hört nicht mehr auf.</div>
+  </div>
+
+  <!-- REEL STATS BAR -->
+  <div>
+    <div class="reel-bar">
+      <div class="reel-stat">
+        <div class="reel-num">1.304.204</div>
+        <div class="reel-label">Aufrufe<br>ein einziges Reel</div>
+      </div>
+      <div class="reel-stat">
+        <div class="reel-num">635.881</div>
+        <div class="reel-label">Erreichte Konten<br>99,5 % Nicht-Follower</div>
+      </div>
+      <div class="reel-stat">
+        <div class="reel-num">13.842</div>
+        <div class="reel-label">Interaktionen<br>organisch, unbeauftragt</div>
+      </div>
+      <div class="reel-stat">
+        <div class="reel-num">2.685</div>
+        <div class="reel-label">Gespeicherte Inhalte<br>Qualitätsindikator</div>
+      </div>
+      <div class="reel-qr">
+        <div class="qr-box">
+          <!-- QR Code Placeholder — Reel 22.02.2026 -->
+          <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Corner TL -->
+            <rect x="2" y="2" width="12" height="12" rx="1" fill="#f5f2ee"/>
+            <rect x="4" y="4" width="8" height="8" rx="0.5" fill="#0f0f0f"/>
+            <rect x="6" y="6" width="4" height="4" fill="#f5f2ee"/>
+            <!-- Corner TR -->
+            <rect x="24" y="2" width="12" height="12" rx="1" fill="#f5f2ee"/>
+            <rect x="26" y="4" width="8" height="8" rx="0.5" fill="#0f0f0f"/>
+            <rect x="28" y="6" width="4" height="4" fill="#f5f2ee"/>
+            <!-- Corner BL -->
+            <rect x="2" y="24" width="12" height="12" rx="1" fill="#f5f2ee"/>
+            <rect x="4" y="26" width="8" height="8" rx="0.5" fill="#0f0f0f"/>
+            <rect x="6" y="28" width="4" height="4" fill="#f5f2ee"/>
+            <!-- Center dots pattern -->
+            <rect x="16" y="2" width="3" height="3" fill="#00a651"/>
+            <rect x="20" y="2" width="3" height="3" fill="#f5f2ee"/>
+            <rect x="16" y="6" width="3" height="3" fill="#f5f2ee"/>
+            <rect x="20" y="6" width="3" height="3" fill="#00a651"/>
+            <rect x="16" y="10" width="3" height="3" fill="#00a651"/>
+            <rect x="2" y="16" width="3" height="3" fill="#00a651"/>
+            <rect x="6" y="16" width="3" height="3" fill="#f5f2ee"/>
+            <rect x="10" y="16" width="3" height="3" fill="#00a651"/>
+            <rect x="16" y="16" width="7" height="7" rx="1" fill="#00a651"/>
+            <rect x="25" y="16" width="3" height="3" fill="#f5f2ee"/>
+            <rect x="29" y="16" width="3" height="3" fill="#00a651"/>
+            <rect x="33" y="16" width="3" height="3" fill="#f5f2ee"/>
+            <rect x="2" y="20" width="3" height="3" fill="#f5f2ee"/>
+            <rect x="6" y="20" width="3" height="3" fill="#00a651"/>
+            <rect x="10" y="20" width="3" height="3" fill="#f5f2ee"/>
+            <rect x="25" y="20" width="3" height="3" fill="#00a651"/>
+            <rect x="29" y="20" width="3" height="3" fill="#f5f2ee"/>
+            <rect x="33" y="20" width="3" height="3" fill="#00a651"/>
+            <rect x="16" y="25" width="3" height="3" fill="#f5f2ee"/>
+            <rect x="20" y="25" width="3" height="3" fill="#00a651"/>
+            <rect x="25" y="25" width="3" height="3" fill="#f5f2ee"/>
+            <rect x="29" y="25" width="3" height="3" fill="#00a651"/>
+            <rect x="33" y="25" width="3" height="3" fill="#f5f2ee"/>
+            <rect x="16" y="29" width="3" height="3" fill="#00a651"/>
+            <rect x="20" y="29" width="3" height="3" fill="#f5f2ee"/>
+            <rect x="25" y="29" width="3" height="3" fill="#00a651"/>
+            <rect x="29" y="29" width="3" height="3" fill="#f5f2ee"/>
+            <rect x="33" y="29" width="3" height="3" fill="#00a651"/>
+            <rect x="16" y="33" width="3" height="3" fill="#f5f2ee"/>
+            <rect x="20" y="33" width="3" height="3" fill="#00a651"/>
+            <rect x="25" y="33" width="3" height="3" fill="#f5f2ee"/>
+          </svg>
+        </div>
+        <div class="qr-label">Reel ansehen<br>22. Feb. 2026</div>
+      </div>
+    </div>
+    <div class="reel-caption">↑ Dieses Reel: Eine Festool Domino-Verbindung, live in der Werkstatt. Organisch viral. Keine Werbung. Kein Auftrag.</div>
+  </div>
+
+  <!-- KURSPARK MAIN OFFER -->
+  <div class="kurspark-block">
+    <div class="kurspark-left">
+      <div class="kurspark-headline">Der Festool<br>Kurspark Wien</div>
+      <div class="kurspark-desc">
+        Kein Messe-Auftritt. Kein Baumarkt-Regal. Sondern das hier:<br><br>
+        <em>~900 Menschen pro Jahr</em>, die Festool-Werkzeug in der Hand halten — in einer echten Werkstatt, mit einem Tischlermeister daneben, mit dem echten Willen, etwas zu bauen.<br><br>
+        Wir liefern Raum, Instruktion und Publikum. Ihr liefert die Geräte. Gemeinsam schaffen wir den überzeugendsten Verkaufskanal, den Festool in Wien hat.
+      </div>
+    </div>
+    <div class="kurspark-right">
+      <div class="kurspark-list-title">Unser Wunsch-Kurspark</div>
+      <div class="device-grid">
+        <div class="device-item">Domino DF 500 / 700<span class="qty">3 Stk.</span></div>
+        <div class="device-item">Oberfräse OF 1010<span class="qty">3–4 Stk.</span></div>
+        <div class="device-item">Tauchsäge TS 55<span class="qty">2 Stk.</span></div>
+        <div class="device-item">Deltaschleifer DTS<span class="qty">4 Stk.</span></div>
+        <div class="device-item">Kantenfräse OFK<span class="qty">2 Stk.</span></div>
+        <div class="device-item">Staubsauger CTL<span class="qty">2 Stk.</span></div>
+        <div class="device-item">Kapp-Zugsäge KS 120R<span class="qty">2 Stk.</span></div>
+        <div class="device-item">Handkreissäge HKC<span class="qty">2 Stk.</span></div>
+        <div class="device-item">Tischkreissäge TKS<span class="qty">1 Stk.</span></div>
+        <div class="device-item">Domino Sets 4–16mm<span class="qty">Verbrauch</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REACH + GENDER -->
+  <div class="two-col">
+    <div>
+      <div class="sec-title">Reichweite — <span>90 Tage</span></div>
+      <table class="reach-table">
+        <thead>
+          <tr>
+            <th>Plattform</th>
+            <th>Aufrufe</th>
+            <th>Organisch</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="platform">Instagram</span></td>
+            <td><span class="big">2,4 Mio.</span></td>
+            <td>74 %</td>
+          </tr>
+          <tr>
+            <td><span class="platform">Facebook</span></td>
+            <td><span class="big">2,0 Mio.</span></td>
+            <td>36 %</td>
+          </tr>
+          <tr>
+            <td><span class="platform">YouTube</span></td>
+            <td><span class="big">1,5 Mio.</span></td>
+            <td>&gt; 90 %</td>
+          </tr>
+          <tr class="reach-total">
+            <td><strong>Gesamt DACH</strong></td>
+            <td><strong>~5,9 Mio.</strong></td>
+            <td>AT · DE · CH</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="live-box" style="margin-top:8px;">
+        <div class="big-num">~900</div>
+        <div class="live-label">Live-Touchpoints / Jahr<br>Festool in echten Händen</div>
+        <div class="live-detail">
+          <strong>600+</strong> Kursteilnehmer · <strong>~275</strong> Teamworkshop-TN · <strong>~20</strong> aktive Members<br>
+          Demografie: 2 Tischlermeister, Wien 17., 800 m² Profi-Werkstatt
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-title">Publikum — <span>beide Seiten</span></div>
+      <div class="gender-box">
+        <div class="gender-title">Geschlechterverteilung je Plattform</div>
+
+        <div class="gender-row">
+          <div class="gender-platform">Instagram / Facebook</div>
+          <div class="gender-bars">
+            <div class="bar-f" style="width:60%"></div>
+            <div class="bar-m" style="width:40%"></div>
+          </div>
+          <div class="gender-labels">
+            <span style="color:var(--red)">♀ 60 % Frauen</span>
+            <span>♂ 40 % Männer</span>
+          </div>
+        </div>
+
+        <div class="gender-row">
+          <div class="gender-platform">YouTube</div>
+          <div class="gender-bars">
+            <div class="bar-f" style="width:4%"></div>
+            <div class="bar-m" style="width:96%"></div>
+          </div>
+          <div class="gender-labels">
+            <span style="color:var(--red)">♀ 4 %</span>
+            <span>♂ 96 % Männer</span>
+          </div>
+        </div>
+
+        <div class="gender-insight">
+          <strong>Was das bedeutet:</strong> Wir erreichen die klassische männliche Handwerk-Zielgruppe auf YouTube — und gleichzeitig das weibliche Publikum, das Werkzeugmarken mit keinem anderen Kanal organisch erreichen. Beide Wege führen zur Werkbank.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CREDENTIALS BAR -->
+  <div class="cred-bar">
+    <div class="cred-item green">
+      <div class="cred-label">Auszeichnung</div>
+      <div class="cred-value">Hidden Champion 2024</div>
+      <div class="cred-sub">Wirtschaftskammer Österreich</div>
+    </div>
+    <div class="cred-item green">
+      <div class="cred-label">Medien</div>
+      <div class="cred-value">Die Presse — ganzseitig</div>
+      <div class="cred-sub">+ weitere Berichterstattungen</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-label">Produktion</div>
+      <div class="cred-value">30 Jahre Medien-Background</div>
+      <div class="cred-sub">ProSiebenSat.1 · RedBull · ORF</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-label">Soziales Engagement</div>
+      <div class="cred-value">Caritas Wien Kooperation</div>
+      <div class="cred-sub">Teams bauen Möbel für soziale Einrichtungen</div>
+    </div>
+  </div>
+
+  <!-- OFFER TIERS -->
+  <div>
+    <div class="sec-title">Was wir uns vorstellen — <span>3 Ebenen</span></div>
+    <div class="tiers">
+      <div class="tier featured">
+        <div class="tier-num">EBENE 01 · BASIS</div>
+        <div class="tier-title">Festool Kurspark Wien</div>
+        <div class="tier-desc">
+          <strong>Festool stellt Geräte als Dauerleihgabe.</strong> DSGS betreibt sie im Kursbetrieb — täglich, dokumentiert, mit echten Menschen. Kein Showroom der aussieht wie ein Showroom. Sondern einer, der funktioniert.
+        </div>
+      </div>
+      <div class="tier">
+        <div class="tier-num">EBENE 02 · AUFBAU</div>
+        <div class="tier-title">Content-Partnerschaft</div>
+        <div class="tier-desc">
+          Monatliche Reels mit Festool-Fokus. Authentisch, handwerklich, mit nachgewiesener Reichweite. <strong>Kein Werbe-Look.</strong> Produktionen von einem Team das TV-Sender, Kampagnen und Markenauftritte gebaut hat — und jetzt Holzspäne macht.
+        </div>
+      </div>
+      <div class="tier">
+        <div class="tier-num">EBENE 03 · SHOWFORMAT</div>
+        <div class="tier-title">Festool Showkurs-Serie</div>
+        <div class="tier-desc">
+          „Probier die Domino" — 2–3 Stunden, max. 8 Personen, Tischlermeister vor Ort. <strong>Kaufbereites Publikum</strong>, das das Gerät aktiv erlebt. Optional: Vorzugskonditionen für Teilnehmer = direkter Sell-Through-Kanal.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-contact">
+      <strong>Jan Hosa</strong> — Gründer & Geschäftsführer, DO SOMETHING GREAT Society GmbH<br>
+      dosomethinggreat.work &nbsp;·&nbsp; @dosomethinggreat_society &nbsp;·&nbsp; Wien 1170<br>
+      <span style="font-family:'DM Mono',monospace;font-size:7.5pt;color:#aaa;">∼90% Festool-Werkzeug · 2 Tischlermeister · seit 2019</span>
+    </div>
+    <div class="footer-cta">
+      Gespräch vereinbaren
+      <span>15 Minuten reichen für den Anfang</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
