@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSGS × Festool — Partnerschaftsangebot</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+  :root {
+    --black: #0f0f0f;
+    --white: #f5f2ee;
+    --festool-green: #00a651;
+    --dsgs-red: #c8102e;
+    --mid: #6b6560;
+    --light: #e8e4df;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.55;
+  }
+
+  /* A4 page */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 14mm 16mm 12mm 16mm;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* HEADER */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--black);
+    margin-bottom: 14px;
+  }
+
+  .brand-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .dsgs-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28pt;
+    letter-spacing: 0.04em;
+    color: var(--black);
+    line-height: 1;
+  }
+
+  .x-mark {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22pt;
+    color: var(--mid);
+    line-height: 1;
+  }
+
+  .festool-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28pt;
+    letter-spacing: 0.04em;
+    color: var(--festool-green);
+    line-height: 1;
+  }
+
+  .header-right {
+    text-align: right;
+  }
+
+  .header-tagline {
+    font-size: 8.5pt;
+    color: var(--mid);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.6;
+  }
+
+  .header-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 7.5pt;
+    color: var(--mid);
+    margin-top: 2px;
+  }
+
+  /* HERO STATEMENT */
+  .hero {
+    background: var(--black);
+    color: var(--white);
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--festool-green);
+  }
+
+  .hero-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 17pt;
+    letter-spacing: 0.03em;
+    line-height: 1.15;
+    max-width: 85%;
+  }
+
+  .hero-sub {
+    font-size: 9pt;
+    color: #b0a99f;
+    margin-top: 6px;
+    font-weight: 300;
+  }
+
+  /* STATS ROW */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .stat-box {
+    border: 1.5px solid var(--light);
+    padding: 10px 12px;
+    position: relative;
+  }
+
+  .stat-box::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--festool-green);
+  }
+
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22pt;
+    color: var(--black);
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  .stat-number.highlight {
+    color: var(--festool-green);
+  }
+
+  .stat-label {
+    font-size: 7.5pt;
+    color: var(--mid);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-top: 3px;
+    line-height: 1.3;
+  }
+
+  /* TWO COLUMNS */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12pt;
+    letter-spacing: 0.06em;
+    color: var(--black);
+    border-bottom: 1.5px solid var(--light);
+    padding-bottom: 4px;
+    margin-bottom: 9px;
+  }
+
+  .section-title span {
+    color: var(--festool-green);
+  }
+
+  ul.clean {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul.clean li {
+    padding: 3.5px 0;
+    padding-left: 14px;
+    position: relative;
+    font-size: 9.5pt;
+    color: var(--black);
+    line-height: 1.4;
+  }
+
+  ul.clean li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--festool-green);
+    font-size: 9pt;
+    font-weight: 600;
+  }
+
+  /* OFFER BOXES */
+  .offer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .offer-box {
+    border: 1.5px solid var(--light);
+    padding: 10px 12px;
+  }
+
+  .offer-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11pt;
+    letter-spacing: 0.05em;
+    color: var(--black);
+    margin-bottom: 6px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--festool-green);
+  }
+
+  .offer-desc {
+    font-size: 8.5pt;
+    color: var(--mid);
+    line-height: 1.45;
+  }
+
+  /* SHOWKURS highlight */
+  .showkurs-box {
+    background: var(--festool-green);
+    color: var(--white);
+    padding: 12px 16px;
+    margin-bottom: 14px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .showkurs-icon {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32pt;
+    line-height: 1;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .showkurs-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13pt;
+    letter-spacing: 0.05em;
+    margin-bottom: 3px;
+  }
+
+  .showkurs-desc {
+    font-size: 8.5pt;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.45;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1.5px solid var(--light);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-contact {
+    font-size: 8.5pt;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  .footer-contact strong {
+    color: var(--black);
+    font-weight: 600;
+  }
+
+  .footer-cta {
+    background: var(--black);
+    color: var(--white);
+    padding: 9px 16px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11pt;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  .footer-cta span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 7.5pt;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: #aaa;
+    margin-top: 1px;
+  }
+
+  /* PROOF BADGE */
+  .proof-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+    align-items: stretch;
+  }
+
+  .proof-badge {
+    flex: 1;
+    background: var(--light);
+    padding: 8px 12px;
+    font-size: 8.5pt;
+    color: var(--mid);
+    line-height: 1.4;
+    border-left: 3px solid var(--black);
+  }
+
+  .proof-badge strong {
+    color: var(--black);
+    font-weight: 600;
+    display: block;
+    font-size: 9pt;
+    margin-bottom: 2px;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand-line">
+      <div class="dsgs-label">DSGS</div>
+      <div class="x-mark">×</div>
+      <div class="festool-label">Festool</div>
+    </div>
+    <div class="header-right">
+      <div class="header-tagline">Partnerschaftsangebot<br>Wien, April 2026</div>
+      <div class="header-sub">dosomethinggreat.work</div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">Festool ist bereits in unserer Werkstatt.<br>Jetzt sollten wir darüber reden.</div>
+    <div class="hero-sub">DO SOMETHING GREAT Society — Co-Working-Holzwerkstatt & Tischlerkurse, Wien 17.</div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="stat-number highlight">2,37 Mio.</div>
+      <div class="stat-label">Instagram-Aufrufe<br>letzte 90 Tage</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number highlight">1,08 Mio.</div>
+      <div class="stat-label">Erreichte Konten<br>+449% Wachstum</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">600+</div>
+      <div class="stat-label">Kursteilnehmer<br>pro Jahr, Wien</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">~900</div>
+      <div class="stat-label">Live-Touchpoints<br>Werkzeug in Händen</div>
+    </div>
+  </div>
+
+  <!-- PROOF BADGES -->
+  <div class="proof-row">
+    <div class="proof-badge">
+      <strong>1,3 Mio. Views — ein einziges Reel</strong>
+      Festool-Systainer prominent im Bild. Unbezahltes Brand-Placement mit nachgewiesener Reichweite.
+    </div>
+    <div class="proof-badge">
+      <strong>60 % Frauen — 40 % Männer</strong>
+      Ein für Werkzeugmarken selten erreichbares Publikum. Organisch, kaufinteressiert, nicht zufällig.
+    </div>
+    <div class="proof-badge">
+      <strong>5.623 gespeicherte Inhalte</strong>
+      Kein passives Scrollen — echtes Interesse. Save-Rate weit über Branchenschnitt.
+    </div>
+  </div>
+
+  <!-- TWO COLUMNS: WER WIR SIND / WAS WIR BIETEN -->
+  <div class="two-col">
+    <div>
+      <div class="section-title">Wer <span>wir</span> sind</div>
+      <ul class="clean">
+        <li>800 m² professionelle Tischler-Werkstatt, Wien 17</li>
+        <li>2 Tischlermeister im Team (Koni & Franky)</li>
+        <li>Kurse für absolute Anfänger bis ambitionierte Hobbyisten</li>
+        <li>Teambuilding-Workshops für Unternehmen (10–25 Personen)</li>
+        <li>Werkstatt-Abo: Community von aktiven Machern</li>
+        <li>Caritas Wien Kooperation: Teams bauen Möbel für soziale Einrichtungen</li>
+        <li>Gegründet 2018/19 — organisch gewachsen, keine Investoren</li>
+      </ul>
+    </div>
+    <div>
+      <div class="section-title">Festool bei <span>DSGS</span></div>
+      <ul class="clean">
+        <li>Zu ~90% Festool-Werkzeug in der Werkstatt im Einsatz</li>
+        <li>Systainer-Koffer täglich sichtbar — in Kursen, Content, Workshops</li>
+        <li>Teilnehmer arbeiten erstmals mit professionellem Werkzeug</li>
+        <li>Erster Kontakt mit Festool = prägender Handwerk-Moment</li>
+        <li>Authentischer Kontext — keine Inszenierung, echte Späne</li>
+        <li>Bereits organisch in viralem Content präsent (kein Deal nötig gewesen)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SHOWKURS HIGHLIGHT -->
+  <div class="showkurs-box">
+    <div class="showkurs-icon">★</div>
+    <div>
+      <div class="showkurs-title">Idee: Festool Showkurs — „Probier die Domino"</div>
+      <div class="showkurs-desc">Wir entwickeln dedizierte Kurz-Kurse rund um spezifische Festool-Geräte. Teilnehmer erleben das Werkzeug aktiv — wir liefern Raum, Instruktion, Publikum. Festool liefert Geräte und ggf. exklusive Kaufkonditionen für Teilnehmer. Ein Verkaufskanal, der sich wie ein Kurs anfühlt.</div>
+    </div>
+  </div>
+
+  <!-- OFFER GRID -->
+  <div class="offer-grid">
+    <div class="offer-box">
+      <div class="offer-title">Content-Partnerschaft</div>
+      <div class="offer-desc">Monatliche Reels mit Festool-Fokus. Authentisch, handwerklich, mit nachgewiesener Viral-Reichweite. Keine Werbeoptik — echter Werkstattalltag.</div>
+    </div>
+    <div class="offer-box">
+      <div class="offer-title">Werkstatt-Partnerschaft</div>
+      <div class="offer-desc">DSGS als offizieller Festool Partner Wien. Logo-Präsenz, gemeinsame Kommunikation, Showroom-Charakter für ausgewählte Geräte im Kursbetrieb.</div>
+    </div>
+    <div class="offer-box">
+      <div class="offer-title">Showkurs-Format</div>
+      <div class="offer-desc">Exklusive Kurse für neue Festool-Geräte. Kaufbereite, handwerklich motivierte Zielgruppe. Optional mit Vorzugskonditionen für Teilnehmer.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-contact">
+      <strong>Jan Hosa</strong> — Gründer & Geschäftsführer, DO SOMETHING GREAT Society GmbH<br>
+      dosomethinggreat.work &nbsp;·&nbsp; @dosomethinggreat_society &nbsp;·&nbsp; Wien, 1170
+    </div>
+    <div class="footer-cta">
+      Gespräch vereinbaren
+      <span>15 Minuten reichen für den Anfang</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
