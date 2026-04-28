@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSGS × Festool — Partnerschaft Wien</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Wix+Madefor+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<template id="__bundler_thumbnail" data-bg-color="#f5f0e8">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#f5f0e8"/>
+    <g transform="translate(600 400)">
+      <circle r="180" fill="none" stroke="#1a1612" stroke-width="6"/>
+      <text x="0" y="-12" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-style="italic" font-size="120" fill="#1a1612">DSGS</text>
+      <text x="0" y="60" text-anchor="middle" font-family="monospace" font-size="22" letter-spacing="6" fill="#00a651">× FESTOOL</text>
+    </g>
+  </svg>
+</template>
+<style>
+/* ── RESET ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+img, video { max-width: 100%; display: block; }
+
+/* ── TOKENS — DSGS palette + Festool accent ── */
+:root {
+  /* DSGS earthy palette */
+  --cream:        #f5f0e8;
+  --cream-soft:   #efe7da;
+  --sand:         #e6d2b5;
+  --sand-warm:    #e2c8b1;
+  --rose-pale:    #edd6c2;
+  --terracotta:   #c69c6d;
+  --orange:       #d19966;
+  --rust:         #a36361;
+  --gold:         #ddba5c;
+  --action:       #d37a03;       /* DSGS action orange */
+  --teal:         #81a1ac;
+  --teal-deep:    #105977;       /* ocean */
+  --sage:         #abc2ab;
+  --forest:       #405b48;
+  --ink:          #1a1612;       /* near-black, warm */
+  --ink-soft:     #2c2620;
+  --mid:          #6b5e52;
+  --rule:         rgba(26,22,18,0.12);
+  --rule-soft:    rgba(26,22,18,0.07);
+
+  /* Festool */
+  --festool:      #00a651;
+  --festool-deep: #006a34;
+
+  /* fonts */
+  --serif:  'Playfair Display', Georgia, serif;
+  --sans:   'Wix Madefor Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --mono:   'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── TYPE PRIMITIVES ── */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--festool-deep);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  display: block;
+}
+.eyebrow.muted { color: var(--mid); }
+.eyebrow.muted::before { background: var(--mid); }
+
+.display {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(44px, 6.2vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+}
+.display em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--festool-deep);
+}
+.h-section {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(36px, 4.6vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.012em;
+  margin-bottom: 24px;
+  text-wrap: balance;
+}
+.h-section em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--festool-deep);
+}
+.lead {
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  font-weight: 400;
+  max-width: 640px;
+  text-wrap: pretty;
+}
+.body-text {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+.body-text strong { color: var(--ink); font-weight: 600; }
+.muted { color: var(--mid); }
+
+/* ── LAYOUT ── */
+.container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+.container-narrow { max-width: 820px; margin: 0 auto; padding: 0 40px; }
+
+section { padding: 130px 0; position: relative; }
+section.tight { padding: 90px 0; }
+.bg-cream { background: var(--cream); }
+.bg-soft { background: var(--cream-soft); }
+.bg-white { background: #fcfaf6; }
+.bg-ink { background: var(--ink); color: var(--cream); }
+.bg-festool { background: var(--festool); color: white; }
+
+/* hairline rule */
+.rule { height: 1px; background: var(--rule); width: 100%; }
+.bg-ink .rule { background: rgba(255,255,255,0.12); }
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(245,240,232,0.86);
+  backdrop-filter: saturate(140%) blur(12px);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 14px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.nav-brand img { width: 36px; height: 36px; display: block; border-radius: 999px; }
+.nav-brand .x { color: var(--mid); margin: 0 4px; font-family: var(--serif); font-style: italic; text-transform: none; font-size: 14px; letter-spacing: 0; }
+.nav-brand .partner { color: var(--festool-deep); font-weight: 500; }
+.nav-cta {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px 10px 20px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+.nav-cta:hover { background: var(--ink); color: var(--cream); }
+.nav-cta::after { content: '→'; font-size: 14px; transition: transform 0.2s ease; }
+.nav-cta:hover::after { transform: translateX(3px); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  padding: 160px 0 80px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 64px;
+  align-items: center;
+  width: 100%;
+}
+.hero-eyebrow-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+.tag.ink { background: var(--ink); color: var(--cream); }
+.tag.green { background: rgba(0,166,81,0.12); color: var(--festool-deep); }
+.tag.outline { border: 1px solid var(--rule); color: var(--mid); }
+
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(56px, 7.2vw, 104px);
+  line-height: 0.98;
+  letter-spacing: -0.022em;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+.hero h1 .accent {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--festool-deep);
+}
+.hero h1 .quiet { color: var(--mid); font-style: italic; font-weight: 400; }
+.hero-sub {
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 540px;
+  font-weight: 400;
+  margin-bottom: 44px;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 40px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--mid);
+  letter-spacing: 0.04em;
+}
+.hero-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 3px;
+  transition: color 0.2s ease, border-color 0.2s ease, gap 0.2s ease;
+}
+.hero-link:hover { color: var(--festool-deep); border-bottom-color: var(--festool-deep); gap: 12px; }
+.hero-meta .item strong {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-style: normal;
+  font-size: 22px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 2px;
+}
+
+/* hero figure */
+.hero-figure {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--ink);
+}
+.hero-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+.hero-figure .badge {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  background: rgba(245,240,232,0.94);
+  backdrop-filter: blur(6px);
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-figure .badge .dot {
+  width: 7px; height: 7px;
+  border-radius: 999px;
+  background: var(--festool);
+  box-shadow: 0 0 0 4px rgba(0,166,81,0.18);
+}
+
+.hero-watermark {
+  position: absolute;
+  right: -60px;
+  bottom: -120px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 26vw;
+  line-height: 1;
+  color: rgba(26,22,18,0.035);
+  pointer-events: none;
+  letter-spacing: -0.04em;
+  z-index: 0;
+}
+
+/* ── STORY (Wer wir sind) ── */
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 80px;
+  align-items: center;
+}
+.story-grid.reverse { grid-template-columns: 1.15fr 1fr; }
+.story-figure {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.story-figure img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.pull {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(28px, 3.2vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  margin-bottom: 28px;
+  text-wrap: balance;
+}
+.pull em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--festool-deep);
+}
+
+/* ── MEDIA GRID ── */
+.media-grid-6 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 56px;
+}
+.media-grid-6 figure {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--cream-soft);
+}
+.media-grid-6 figure img,
+.media-grid-6 figure video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.media-grid-6 figcaption {
+  position: absolute;
+  left: 12px; bottom: 12px;
+  background: rgba(245,240,232,0.92);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
+
+/* clients strip */
+.client-strip {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+}
+.client-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mid);
+  padding-right: 24px;
+  margin-right: 8px;
+}
+.client-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ink-soft);
+  padding: 0 22px;
+  border-left: 1px solid var(--rule);
+  letter-spacing: -0.005em;
+}
+
+/* ── STATS ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-top: 56px;
+}
+.stat-block {
+  background: var(--cream);
+  padding: 36px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+.stat-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 36px;
+  height: 2px;
+  background: var(--festool);
+}
+.stat-icon {
+  margin-bottom: 16px;
+  color: var(--mid);
+  opacity: 0.7;
+}
+.stat-num {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(38px, 4.2vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+}
+.stat-num.accent { color: var(--festool-deep); font-style: italic; font-weight: 400; }
+.stat-growth {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--festool-deep);
+  margin-top: 2px;
+}
+.stat-label {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--mid);
+}
+
+/* ── REEL HIGHLIGHT ── */
+.reel-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.reel-numbers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 36px;
+  margin-top: 44px;
+}
+.reel-num {
+  border-left: 2px solid var(--festool);
+  padding-left: 18px;
+}
+.reel-num .big {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+}
+.reel-num .lab {
+  font-size: 14px;
+  color: var(--mid);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.reel-note {
+  margin-top: 36px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--mid);
+  border-left: 1px solid var(--rule);
+  padding-left: 14px;
+  line-height: 1.6;
+}
+
+.qr-card {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 32px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.qr-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at top right, rgba(0,166,81,0.18), transparent 60%),
+    radial-gradient(ellipse at bottom left, rgba(198,156,109,0.10), transparent 60%);
+  pointer-events: none;
+}
+.qr-card .label-top {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  position: relative;
+}
+.qr-card .qr {
+  width: 156px;
+  height: 156px;
+  background: var(--cream);
+  padding: 12px;
+  border-radius: 4px;
+  position: relative;
+}
+.qr-card .qr svg { width: 100%; height: 100%; display: block; }
+.qr-card .cap {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  text-align: center;
+  color: var(--cream);
+  position: relative;
+}
+.qr-card .cap small {
+  display: block;
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.45);
+  margin-top: 6px;
+}
+
+/* ── KURSPARK ── */
+.kurspark-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-top: 56px;
+}
+.device-list {
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+.device-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 17px;
+  color: var(--ink-soft);
+}
+.device-item .name { font-weight: 500; }
+.device-item .qty {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--festool-deep);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  margin-left: 16px;
+}
+.kurspark-note {
+  margin-top: 28px;
+  background: var(--cream-soft);
+  border-left: 3px solid var(--festool);
+  padding: 22px 26px;
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  border-radius: 0 4px 4px 0;
+}
+.kurspark-note strong { color: var(--ink); display: block; margin-bottom: 4px; font-weight: 600; }
+
+.value-list { display: flex; flex-direction: column; gap: 22px; margin-top: 28px; }
+.value-item {
+  border-left: 2px solid var(--festool);
+  padding: 4px 0 4px 22px;
+}
+.value-item.muted-rule { border-left-color: var(--rule); }
+.value-item .vt {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.value-item.muted-rule .vt { color: var(--mid); }
+.value-item .vd {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* ── GENDER ── */
+.gender-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 56px;
+}
+.gender-card {
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+.gender-card .plat {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+.gender-card .ring-row {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+}
+.gender-card svg.ring { flex-shrink: 0; }
+.gender-card .legend {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.legend-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--mid);
+}
+.legend-row .pct {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  min-width: 56px;
+}
+.legend-row.f .pct { color: var(--rust); font-style: italic; font-weight: 400; }
+.legend-row.f::before {
+  content: '';
+  width: 10px; height: 10px;
+  background: var(--rust);
+  border-radius: 999px;
+  display: inline-block;
+}
+.legend-row.m::before {
+  content: '';
+  width: 10px; height: 10px;
+  background: var(--mid);
+  opacity: 0.4;
+  border-radius: 999px;
+  display: inline-block;
+}
+.gender-card .age {
+  font-size: 13px;
+  color: var(--mid);
+  letter-spacing: 0.04em;
+}
+
+.gender-insight {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 44px 48px;
+  border-radius: 6px;
+  margin-top: 32px;
+  font-size: 19px;
+  line-height: 1.6;
+  font-weight: 400;
+  position: relative;
+  overflow: hidden;
+}
+.gender-insight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top right, rgba(0,166,81,0.22), transparent 55%);
+  pointer-events: none;
+}
+.gender-insight strong { color: white; font-weight: 600; position: relative; }
+.gender-insight p { position: relative; max-width: 820px; }
+
+/* ── TIERS ── */
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 56px;
+}
+.tier {
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 36px 32px 40px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.tier.featured {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+.tier .step {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 18px;
+}
+.tier.featured .step { color: rgba(255,255,255,0.55); }
+.tier .step .num {
+  color: var(--festool-deep);
+  font-weight: 500;
+  margin-right: 8px;
+}
+.tier.featured .step .num { color: var(--festool); }
+.tier h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.05;
+  letter-spacing: -0.012em;
+  color: inherit;
+  margin-bottom: 24px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--rule);
+}
+.tier h3 em { font-style: italic; font-weight: 400; color: var(--festool-deep); }
+.tier.featured h3 em { color: var(--festool); }
+.tier.featured h3 { border-bottom-color: rgba(255,255,255,0.15); }
+.tier p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+.tier.featured p { color: rgba(245,240,232,0.78); }
+.tier p strong { color: var(--ink); font-weight: 600; }
+.tier.featured p strong { color: white; }
+
+/* ── CREDENTIALS ── */
+.creds-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-top: 56px;
+}
+.cred {
+  background: var(--cream);
+  padding: 32px 26px;
+  position: relative;
+}
+.cred::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 36px;
+  height: 2px;
+  background: var(--rule);
+}
+.cred.highlight::before { background: var(--festool); }
+.cred .lab {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 16px;
+}
+.cred .val {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: -0.008em;
+}
+.cred.highlight .val em { font-style: italic; color: var(--festool-deep); font-weight: 400; }
+.cred .sub {
+  font-size: 14px;
+  color: var(--mid);
+  line-height: 1.55;
+}
+
+/* ── CTA ── */
+.cta {
+  text-align: center;
+  padding: 140px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.cta-watermark {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 32vw;
+  line-height: 1;
+  color: rgba(255,255,255,0.025);
+  pointer-events: none;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+.cta h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(44px, 6vw, 80px);
+  line-height: 1.02;
+  letter-spacing: -0.018em;
+  color: var(--cream);
+  margin-bottom: 20px;
+  position: relative;
+  text-wrap: balance;
+}
+.cta h2 em { font-style: italic; font-weight: 400; color: var(--festool); }
+.cta-sub {
+  font-size: 19px;
+  color: rgba(245,240,232,0.6);
+  max-width: 580px;
+  margin: 0 auto 56px;
+  line-height: 1.6;
+  position: relative;
+}
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--festool);
+  color: white;
+  text-decoration: none;
+  padding: 18px 32px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+  position: relative;
+  letter-spacing: 0.01em;
+}
+.cta-button:hover { background: var(--festool-deep); transform: translateY(-1px); }
+.cta-button .arrow { transition: transform 0.2s ease; }
+.cta-button:hover .arrow { transform: translateX(3px); }
+
+.cta-people {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 64px;
+  flex-wrap: wrap;
+  position: relative;
+}
+.cta-person {
+  text-align: center;
+}
+.cta-person .name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 19px;
+  color: var(--cream);
+  letter-spacing: -0.005em;
+  margin-bottom: 4px;
+}
+.cta-person .role {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.4);
+}
+.cta-link {
+  display: inline-block;
+  margin-top: 24px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: rgba(245,240,232,0.6);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid rgba(245,240,232,0.2);
+  padding-bottom: 2px;
+  position: relative;
+}
+.cta-link:hover { color: var(--festool); border-bottom-color: var(--festool); }
+
+.social-row {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 48px;
+  flex-wrap: wrap;
+  position: relative;
+}
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(245,240,232,0.45);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease;
+}
+.social-link:hover { color: var(--festool); }
+.social-link svg { flex-shrink: 0; }
+
+/* ── FOOTER ── */
+footer {
+  background: #0e0a07;
+  padding: 28px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: rgba(245,240,232,0.3);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+footer a { color: inherit; text-decoration: none; }
+footer a:hover { color: var(--festool); }
+.footer-brand { display: flex; align-items: center; gap: 10px; }
+.footer-brand img { width: 22px; height: 22px; opacity: 0.6; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 920px) {
+  section { padding: 90px 0; }
+  .container, .container-narrow { padding: 0 24px; }
+  .nav-inner { padding: 12px 24px; }
+  .hero { padding: 120px 0 60px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .story-grid, .story-grid.reverse { grid-template-columns: 1fr; gap: 40px; }
+  .reel-grid { grid-template-columns: 1fr; gap: 48px; }
+  .kurspark-grid { grid-template-columns: 1fr; gap: 48px; }
+  .gender-grid { grid-template-columns: 1fr; }
+  .tiers-grid { grid-template-columns: 1fr; }
+  .creds-grid, .stats-grid { grid-template-columns: 1fr 1fr; }
+  .media-grid-6 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 1180px) and (min-width: 921px) {
+  .media-grid-6 { grid-template-columns: repeat(3, 1fr); 
+  .cta { padding: 90px 24px; }
+  footer { flex-direction: column; text-align: center; }
+}
+@media (max-width: 540px) {
+  .creds-grid, .stats-grid { grid-template-columns: 1fr; }
+  .reel-numbers { grid-template-columns: 1fr; }
+  .nav-cta { padding: 8px 14px; font-size: 12px; }
+}
+
+/* anim */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─────────── NAV ─────────── -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <img class="logo-mark" src="assets/logo-round.png" alt="DSGS">
+      <span>DSGS <span class="x">×</span> <span class="partner">Festool</span></span>
+    </div>
+    <a href="#kontakt" class="nav-cta">Gespräch vereinbaren</a>
+  </div>
+</nav>
+
+
+<!-- ─────────── HERO ─────────── -->
+<section class="hero bg-cream">
+  <div class="hero-watermark">DSGS</div>
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow-row">
+          <span class="tag green">Partnerschaftsangebot</span>
+          <span class="tag outline">Wien · April 2026</span>
+        </div>
+        <h1>
+          5,9&nbsp;Millionen<br>
+          Menschen.<br>
+          <span class="accent">90 Tage.</span><br>
+          <span class="quiet">Wien.</span>
+        </h1>
+        <p class="hero-sub">
+          DO SOMETHING GREAT Society ist die führende Co‑Working‑Holzwerkstatt
+          in Wien — und einer der wachstumsstärksten Handwerk‑Kanäle im DACH‑Raum.
+          Wir wollen das gemeinsam mit Festool weiterdenken.
+        </p>
+        <div class="hero-meta">
+          <div class="item"><strong>800 m²</strong>Werkstatt · Wien 17.</div>
+          <div class="item"><strong>~900</strong>First‑User pro Jahr</div>
+          <div class="item"><strong>Seit 2022</strong>Tischlern mit Sinn</div>
+        </div>
+        <a class="hero-link" href="https://dosomethinggreat.work" target="_blank" rel="noopener">
+          <span>dosomethinggreat.work</span>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M5 11l6-6M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="hero-figure">
+        <img src="media/kurs-bohrer.jpg" alt="Teilnehmerin mit Festool Akkubohrer in der DSGS Werkstatt">
+        <div class="badge"><span class="dot"></span>Live · DSGS Werkstatt Wien</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────── STORY · WER WIR SIND ─────────── -->
+<section class="bg-white">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-figure">
+        <img src="media/jan-philipp.png" alt="Jan Hosa und Philipp Consemüller — Gründer DSGS in der Werkstatt" style="object-position: center 25%;">
+      </div>
+      <div>
+        <div class="eyebrow">Wer wir sind</div>
+        <p class="pull">
+          Irgendwann wollten wir nicht mehr nur am Computer sitzen
+          und <em>Daten produzieren.</em>
+        </p>
+        <p class="body-text" style="margin-bottom:18px;">
+          Also haben wir eine legendäre und historische Film‑Tischlerei mitten in Wien
+          übernommen. <strong>800 m², Wien 17.</strong>, mit zwei Tischlermeistern im Team und
+          der festen Überzeugung: Wer einmal selbst etwas baut, hört nicht mehr auf.
+        </p>
+        <p class="body-text" style="margin-bottom:18px;">
+          Seit 2022 kommen Menschen zu uns, die noch nie ein Werkzeug in der Hand
+          hatten — und gehen nach ein paar Stunden mit einem Werkstück nach Hause.
+          Das ist unser Kern. Kein Escape Room. Kein Flip‑Chart.
+        </p>
+        <p class="body-text">
+          <strong>Echte Späne. Echter Geruch. Echtes Können.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────── FESTOOL BEI DSGS ─────────── -->
+<section class="bg-soft">
+  <div class="container">
+    <div class="eyebrow">Festool bei DSGS</div>
+    <h2 class="h-section">~90 % Festool.<br><em>Seit Tag&nbsp;1.</em></h2>
+    <p class="lead">
+      Nicht weil wir mussten. Weil wir wollten. Festool steht in unserer Werkstatt
+      weil es das beste Werkzeug für Menschen ist, die gerade anfangen — präzise,
+      sicher, verlässlich. Täglich in Händen, die noch nie professionelles Werkzeug
+      gehalten haben.
+    </p>
+
+    <div class="media-grid-6">
+      <figure>
+        <img src="media/festool-systainer.jpg" alt="Festool Systainer-Stack mit DSGS Sticker">
+        <figcaption>Systainer · Werkstatt</figcaption>
+      </figure>
+      <figure>
+        <img src="media/kurs-saege.jpg" alt="Teilnehmerin mit Festool Tauchsäge auf Führungsschiene">
+        <figcaption>Tauchsäge · Kurs</figcaption>
+      </figure>
+      <figure>
+        <img src="media/festool-oberfraese.jpg" alt="Tischlermeister mit Festool Oberfräse OF 1010">
+        <figcaption>Oberfräse OF 1010</figcaption>
+      </figure>
+      <figure>
+        <img src="media/kurs-schleifer.jpg" alt="Teilnehmerin mit Festool Exzenterschleifer">
+        <figcaption>Exzenterschleifer</figcaption>
+      </figure>
+      <figure>
+        <img src="media/kurs-bohrer.jpg" alt="Teilnehmerin mit Festool Akkubohrer">
+        <figcaption>Akkubohrer · Domino</figcaption>
+      </figure>
+      <figure>
+        <img src="media/story-jigsaw.jpg" alt="Teilnehmerin mit Festool Stichsäge — DSGS Werkstatt Wien">
+        <figcaption>Stichsäge · Kurs</figcaption>
+      </figure>
+      <figure>
+        <video autoplay muted loop playsinline poster="media/kurs-bohrer.jpg">
+          <source src="media/teamworkshop-verbund.mp4?v=2" type="video/mp4">
+        </video>
+        <figcaption>Teamworkshop · Verbund</figcaption>
+      </figure>
+      <figure>
+        <video autoplay muted loop playsinline poster="media/story-jigsaw.jpg">
+          <source src="media/kids-sommercamp.mp4?v=2" type="video/mp4">
+        </video>
+        <figcaption>Kids · Sommercamp</figcaption>
+      </figure>
+    </div>
+
+    <div class="client-strip">
+      <span class="client-label">Teamworkshop‑Kunden</span>
+      <span class="client-name">Verbund</span>
+      <span class="client-name">Wiener Netze</span>
+      <span class="client-name">WU Wien</span>
+      <span class="client-name">Caritas Wien</span>
+      <span class="client-name">+ weitere</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────── ZAHLEN ─────────── -->
+<section class="bg-white">
+  <div class="container">
+    <div class="eyebrow">Reichweite · 90 Tage · Jan – Apr 2026</div>
+    <h2 class="h-section">Die Zahlen.<br><em>Ungeschönt.</em></h2>
+    <p class="lead">
+      Acht Kennzahlen, eine Quelle. Was unsere Plattformen in den letzten drei
+      Monaten geleistet haben — direkt aus den Analytics, ohne Korrekturen.
+    </p>
+
+    <div class="stats-grid">
+      <div class="stat-block">
+        <div class="stat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="stat-num accent">5,9 Mio.</div>
+        <div class="stat-growth">DACH‑gesamt</div>
+        <div class="stat-label">Aufrufe über alle<br>Plattformen · 90 Tage</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <div class="stat-num">1,1 Mio.</div>
+        <div class="stat-growth">+ 455,1 %</div>
+        <div class="stat-label">Erreichte Konten<br>Instagram</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <div class="stat-num">64,6 %</div>
+        <div class="stat-growth">YouTube</div>
+        <div class="stat-label">Videos bis zum<br>Ende angesehen</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="stat-num accent">~900</div>
+        <div class="stat-growth">Live · Wien</div>
+        <div class="stat-label">Menschen mit Festool<br>in der Hand · pro Jahr</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="stat-num">36.079</div>
+        <div class="stat-growth">+ 303,9 % · Instagram</div>
+        <div class="stat-label">Interaktionen<br>organisch</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="stat-num">249 Tage</div>
+        <div class="stat-growth">Facebook · 90 Tage</div>
+        <div class="stat-label">Gesamte Watch‑time<br>in 3 Monaten</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="stat-num">97 %</div>
+        <div class="stat-growth">AT · DE · CH</div>
+        <div class="stat-label">DACH‑Anteil<br>am Publikum</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div class="stat-num accent">+ 472 %</div>
+        <div class="stat-growth">YouTube · 90 Tage</div>
+        <div class="stat-label">Aufrufe‑Wachstum<br>vs. Vorperiode</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────── DAS REEL · BEWEIS ─────────── -->
+<section class="bg-soft">
+  <div class="container">
+    <div class="reel-grid">
+      <div>
+        <div class="eyebrow">Beweis · Ein Reel</div>
+        <h2 class="h-section">
+          Als wir einen Handwerk‑Moment mit Festool neu erzählt haben,
+          <em>sahen 1,3 Millionen zu.</em>
+        </h2>
+        <p class="body-text" style="max-width:560px;">
+          Wir posten fünf Mal pro Woche — seit Jahren. Über 550 Posts,
+          80 % davon Videos, verteilt auf Instagram, YouTube und Facebook.
+          Das ist <em>eines</em> unserer Formate: Wir suchen bemerkenswerte
+          Handwerk‑Momente und erzählen sie neu — begeistert, motivierend,
+          mit unserer Stimme. Weil wir Festool am liebsten verwenden,
+          taucht es im Bild auf. Immer authentisch, nie inszeniert.
+        </p>
+        <p class="body-text" style="max-width:560px; margin-top:14px; color:var(--mid); font-style:italic;">
+          Dieses eine Reel: 1,3 Millionen sahen zu. Organisch. Kein Budget,
+          kein Auftrag. Das ist kein Ausreißer — das ist ein Format das funktioniert.
+          Und das noch keinen Partner hat.
+        </p>
+
+        <div class="reel-numbers">
+          <div class="reel-num"><div class="big">1.304.204</div><div class="lab">Aufrufe · ein Reel</div></div>
+          <div class="reel-num"><div class="big">635.881</div><div class="lab">Erreichte Konten</div></div>
+          <div class="reel-num"><div class="big">99,5 %</div><div class="lab">Nicht‑Follower</div></div>
+          <div class="reel-num"><div class="big">2.685</div><div class="lab">Gespeicherte Inhalte</div></div>
+        </div>
+        <p class="reel-note">Reel vom 22. Februar 2026 · @dosomethinggreat_society · instagram.com/reel/DVEUk2jCNPc</p>
+      </div>
+      <div class="qr-card">
+        <div class="label-top">Scan to view</div>
+        <div class="qr">
+          <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="38" height="38" fill="#1a1612"/>
+            <rect x="2" y="2" width="12" height="12" rx="1" fill="#f5f0e8"/>
+            <rect x="4" y="4" width="8" height="8" rx="0.5" fill="#1a1612"/>
+            <rect x="6" y="6" width="4" height="4" fill="#f5f0e8"/>
+            <rect x="24" y="2" width="12" height="12" rx="1" fill="#f5f0e8"/>
+            <rect x="26" y="4" width="8" height="8" rx="0.5" fill="#1a1612"/>
+            <rect x="28" y="6" width="4" height="4" fill="#f5f0e8"/>
+            <rect x="2" y="24" width="12" height="12" rx="1" fill="#f5f0e8"/>
+            <rect x="4" y="26" width="8" height="8" rx="0.5" fill="#1a1612"/>
+            <rect x="6" y="28" width="4" height="4" fill="#f5f0e8"/>
+            <rect x="16" y="2" width="3" height="3" fill="#00a651"/>
+            <rect x="20" y="5" width="3" height="3" fill="#00a651"/>
+            <rect x="16" y="8" width="3" height="3" fill="#00a651"/>
+            <rect x="2" y="16" width="3" height="3" fill="#00a651"/>
+            <rect x="7" y="17" width="3" height="3" fill="#00a651"/>
+            <rect x="11" y="16" width="3" height="3" fill="#00a651"/>
+            <rect x="16" y="16" width="7" height="7" rx="1" fill="#00a651"/>
+            <rect x="25" y="16" width="3" height="3" fill="#f5f0e8"/>
+            <rect x="30" y="17" width="3" height="3" fill="#f5f0e8"/>
+            <rect x="35" y="16" width="3" height="3" fill="#00a651"/>
+            <rect x="2" y="21" width="3" height="3" fill="#f5f0e8"/>
+            <rect x="7" y="20" width="3" height="3" fill="#00a651"/>
+            <rect x="11" y="21" width="3" height="3" fill="#f5f0e8"/>
+            <rect x="25" y="21" width="3" height="3" fill="#00a651"/>
+            <rect x="30" y="20" width="3" height="3" fill="#f5f0e8"/>
+            <rect x="16" y="25" width="3" height="3" fill="#f5f0e8"/>
+            <rect x="20" y="27" width="3" height="3" fill="#00a651"/>
+            <rect x="25" y="26" width="3" height="3" fill="#f5f0e8"/>
+            <rect x="30" y="25" width="3" height="3" fill="#00a651"/>
+            <rect x="35" y="26" width="3" height="3" fill="#f5f0e8"/>
+            <rect x="16" y="31" width="3" height="3" fill="#00a651"/>
+            <rect x="21" y="30" width="3" height="3" fill="#f5f0e8"/>
+            <rect x="26" y="31" width="3" height="3" fill="#00a651"/>
+          </svg>
+        </div>
+        <div class="cap">Reel ansehen<small>22. Februar 2026</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────── KURSPARK ─────────── -->
+<section class="bg-white">
+  <div class="container">
+    <div class="eyebrow">Unser Angebot — Basis</div>
+    <h2 class="h-section">Der Festool<br><em>Kurspark Wien.</em></h2>
+    <p class="lead">
+      Kein Messestand. Kein Baumarkt‑Regal. Sondern der einzige Ort in Wien,
+      wo ~900 Menschen pro Jahr ein Festool‑Werkzeug zum ersten Mal anfassen —
+      mit einem Tischlermeister daneben, mit echtem Holz, mit dem Willen
+      es wirklich zu lernen.
+    </p>
+
+    <div class="kurspark-grid">
+      <div>
+        <p class="body-text" style="margin-bottom:24px; font-size:15px; color:var(--mid);">
+          Was wir uns als Dauerleihgabe vorstellen — als Ausgangspunkt für ein Gespräch,
+          nicht als fixes Forderungsblatt. Andere Modelle oder Prioritäten von eurer Seite
+          sind ausdrücklich willkommen.
+        </p>
+        <ul class="device-list">
+          <li class="device-item"><span class="name">Domino DF 500 / 700</span><span class="qty">3 Stk.</span></li>
+          <li class="device-item"><span class="name">Oberfräse OF 1010</span><span class="qty">3 – 4 Stk.</span></li>
+          <li class="device-item"><span class="name">Tauchsäge TS 55</span><span class="qty">2 Stk.</span></li>
+          <li class="device-item"><span class="name">Deltaschleifer DTS</span><span class="qty">4 Stk.</span></li>
+          <li class="device-item"><span class="name">Kantenfräse OFK</span><span class="qty">2 Stk.</span></li>
+          <li class="device-item"><span class="name">Staubsauger CTL</span><span class="qty">2 Stk.</span></li>
+          <li class="device-item"><span class="name">Kapp‑Zugsäge KS 120R</span><span class="qty">2 Stk.</span></li>
+          <li class="device-item"><span class="name">Handkreissäge HKC</span><span class="qty">2 Stk.</span></li>
+          <li class="device-item"><span class="name">Tischkreissäge TKS</span><span class="qty">1 Stk.</span></li>
+          <li class="device-item"><span class="name">Domino‑Sets 4 – 16 mm</span><span class="qty">Verbrauch</span></li>
+        </ul>
+        <div class="kurspark-note">
+          <strong>Warum 2 – 4 Stück je Gerät?</strong>
+          Für Gruppenunterricht braucht jede Teilnehmerin ihr eigenes Gerät.
+          Aktuell haben wir 1 – 2 je Typ — das reicht für Einzelbetreuung,
+          nicht für Showkurse.
+        </div>
+      </div>
+      <div>
+        <p class="pull" style="font-size:clamp(24px,2.6vw,32px);">Was Festool bekommt:</p>
+        <div class="value-list">
+          <div class="value-item">
+            <div class="vt">~900 First‑User pro Jahr</div>
+            <div class="vd">Menschen die Festool zum ersten Mal anfassen — kaufbereite,
+              handwerklich motivierte Zielgruppe.</div>
+          </div>
+          <div class="value-item">
+            <div class="vt">Dokumentierter Nachweis</div>
+            <div class="vd">Content, Analytics, Reichweite — alles messbar und belegbar.</div>
+          </div>
+          <div class="value-item">
+            <div class="vt">Festool‑Probiertage</div>
+            <div class="vd">Ein neues regelmäßiges Kursformat, das wir gerne gemeinsam
+              mit Festool entwickeln: Geräte erklärt bekommen, intensiv ausprobieren,
+              eigene Werkstücke bauen. Tischlermeister vor Ort. Vorzugskonditionen
+              für Teilnehmer optional.</div>
+          </div>
+          <div class="value-item muted-rule">
+            <div class="vt">Kein anderer Kanal in Wien</div>
+            <div class="vd">Festool hat Händler. Die haben Ausstellungsräume.
+              Kein Mensch geht freiwillig hin. Bei uns schon.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────── PUBLIKUM · GENDER ─────────── -->
+<section class="bg-soft">
+  <div class="container">
+    <div class="eyebrow">Publikum</div>
+    <h2 class="h-section">Wir erreichen<br><em>beide Seiten.</em></h2>
+    <p class="lead">
+      Die klassische männliche Handwerk‑Zielgruppe auf YouTube.
+      Das weibliche Publikum, das Werkzeugmarken sonst nicht organisch erreichen,
+      auf Instagram.
+    </p>
+
+    <div class="gender-grid">
+      <!-- Instagram & Facebook -->
+      <div class="gender-card">
+        <div class="plat">Instagram &amp; Facebook</div>
+        <div class="ring-row">
+          <svg class="ring" width="160" height="160" viewBox="0 0 140 140" aria-label="60 % Frauen, 40 % Männer">
+            <circle cx="70" cy="70" r="52" fill="none" stroke="rgba(26,22,18,0.10)" stroke-width="18"/>
+            <circle cx="70" cy="70" r="52" fill="none" stroke="#a36361" stroke-width="18"
+              stroke-dasharray="196.04 130.69" transform="rotate(-90 70 70)" stroke-linecap="butt"/>
+            <text x="70" y="65" text-anchor="middle" font-family="'Playfair Display', serif" font-style="italic" font-size="30" fill="#1a1612">60 %</text>
+            <text x="70" y="83" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#a36361" letter-spacing="2">FRAUEN</text>
+          </svg>
+          <div class="legend">
+            <div class="legend-row f"><span class="pct">60 %</span><span>Frauen</span></div>
+            <div class="legend-row m"><span class="pct">40 %</span><span>Männer</span></div>
+          </div>
+        </div>
+        <div class="age">Hauptalter 35 – 54</div>
+      </div>
+
+      <!-- YouTube -->
+      <div class="gender-card">
+        <div class="plat">YouTube</div>
+        <div class="ring-row">
+          <svg class="ring" width="160" height="160" viewBox="0 0 140 140" aria-label="4 % Frauen, 96 % Männer">
+            <circle cx="70" cy="70" r="52" fill="none" stroke="rgba(26,22,18,0.18)" stroke-width="18"/>
+            <circle cx="70" cy="70" r="52" fill="none" stroke="#a36361" stroke-width="18"
+              stroke-dasharray="13.07 313.66" transform="rotate(-90 70 70)" stroke-linecap="butt"/>
+            <text x="70" y="65" text-anchor="middle" font-family="'Playfair Display', serif" font-style="italic" font-size="30" fill="#1a1612">96 %</text>
+            <text x="70" y="83" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6b5e52" letter-spacing="2">MÄNNER</text>
+          </svg>
+          <div class="legend">
+            <div class="legend-row f"><span class="pct">4 %</span><span>Frauen</span></div>
+            <div class="legend-row m"><span class="pct">96 %</span><span>Männer</span></div>
+          </div>
+        </div>
+        <div class="age">Hauptalter 35 – 44 · DE / AT / CH</div>
+      </div>
+    </div>
+
+    <div class="gender-insight">
+      <p>
+        <strong>Was das bedeutet:</strong>
+        Kein anderer Handwerk‑Kanal im DACH‑Raum erreicht organisch beide
+        Geschlechter in dieser Ausprägung. Festool hat ein Demografie‑Problem —
+        wir haben die Lösung bereits im Kanal. Beide Wege führen zur Werkbank.
+        Und danach oft zum Werkzeugkauf.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────── DREI EBENEN ─────────── -->
+<section class="bg-white">
+  <div class="container">
+    <div class="eyebrow">Was wir uns vorstellen</div>
+    <h2 class="h-section">Drei Ebenen.<br><em>Eine Partnerschaft.</em></h2>
+
+    <div class="tiers-grid">
+      <div class="tier featured">
+        <div class="step"><span class="num">01</span>BASIS</div>
+        <h3>Festool<br><em>Kurspark Wien</em></h3>
+        <p>
+          <strong>Festool stellt Geräte als Dauerleihgabe.</strong>
+          DSGS betreibt sie täglich im Kursbetrieb — dokumentiert, gemessen, sichtbar.
+          Kein Showroom der aussieht wie ein Showroom. Sondern einer der wirklich funktioniert.
+        </p>
+      </div>
+      <div class="tier">
+        <div class="step"><span class="num">02</span>AUFBAU</div>
+        <h3>Content‑<br><em>Partnerschaft</em></h3>
+        <p>
+          Monatliche Reels mit Festool‑Fokus — authentisch, handwerklich,
+          mit nachgewiesener Reichweite. <strong>Kein Werbe‑Look.</strong>
+          Produziert von einem Team mit 30 Jahren Medien‑Background
+          (ProSiebenSat.1, RedBull, ORF) — das jetzt Holzspäne macht.
+        </p>
+      </div>
+      <div class="tier">
+        <div class="step"><span class="num">03</span>ERLEBNIS</div>
+        <h3>Festool<br><em>Probiertage</em></h3>
+        <p>
+          Regelmäßige Kurse für handwerklich motivierte Menschen,
+          die Festool‑Geräte kennenlernen wollen: Erklärung, intensives
+          Ausprobieren, eigene Werkstücke bauen. <strong>Kaufbereites Publikum</strong>,
+          das das Gerät aktiv erlebt. Gerne gemeinsam mit Festool entwickelt — und ausbaubar.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────── CREDENTIALS ─────────── -->
+<section class="bg-soft">
+  <div class="container">
+    <div class="eyebrow">Wer dahinter steckt</div>
+    <h2 class="h-section">Gegründet 2022.<br><em>Hidden Champion 2024.</em></h2>
+
+    <div class="creds-grid">
+      <div class="cred highlight">
+        <div class="lab">Auszeichnung</div>
+        <div class="val"><em>Hidden Champion</em><br>2024</div>
+        <div class="sub">Wirtschaftskammer Österreich</div>
+      </div>
+      <div class="cred highlight">
+        <div class="lab">Presse &amp; TV</div>
+        <div class="val">Die Presse — ganzseitig</div>
+        <div class="sub">ORF · Puls 4 · weitere österr. Medien</div>
+      </div>
+      <div class="cred">
+        <div class="lab">Gründer‑Background</div>
+        <div class="val">30 Jahre Medien</div>
+        <div class="sub">ProSiebenSat.1 · RedBull · ORF<br>Creative Direction, TV, Produktion</div>
+      </div>
+      <div class="cred">
+        <div class="lab">Soziales Engagement</div>
+        <div class="val">Caritas Wien Kooperation</div>
+        <div class="sub">Teams bauen Möbel für<br>soziale Einrichtungen — mit Festool.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────── CTA ─────────── -->
+<section class="bg-ink cta" id="kontakt">
+  <div class="cta-watermark">Society</div>
+  <h2>Ein Gespräch.<br><em>Wann passt es?</em></h2>
+  <p class="cta-sub">Kein Pitch‑Deck. Kein Anhang. 30 Minuten — oder mehr, wenn es passt.</p>
+  <a href="mailto:jan@dosomethinggreat.work" class="cta-button">
+    Gespräch anfragen
+    <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+  <div class="cta-people">
+    <div class="cta-person">
+      <div class="name">Jan Hosa</div>
+      <div class="role">Gründer &amp; Geschäftsführer</div>
+    </div>
+    <div class="cta-person">
+      <div class="name">Philipp Consemüller</div>
+      <div class="role">Gründer &amp; Partner</div>
+    </div>
+  </div>
+
+  <a href="https://dosomethinggreat.work" target="_blank" rel="noopener" class="cta-link">
+    dosomethinggreat.work · Wien 1170
+  </a>
+
+  <div class="social-row">
+    <a href="https://www.instagram.com/dosomethinggreat_society/" class="social-link" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      @dosomethinggreat_society
+    </a>
+    <a href="https://www.youtube.com/@dosomethinggreatsociety" class="social-link" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98" fill="currentColor" stroke="none"/></svg>
+      YouTube
+    </a>
+    <a href="https://www.facebook.com/dosomethinggreatsociety" class="social-link" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      Facebook
+    </a>
+    <a href="https://www.linkedin.com/company/dosomethinggreat-society/" class="social-link" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+  </div>
+</section>
+
+
+<!-- ─────────── FOOTER ─────────── -->
+<footer>
+  <div class="footer-brand">
+    <img src="assets/logo-round.png" alt="DSGS" style="border-radius:999px;filter:invert(1) brightness(1.2);">
+    <span>DO SOMETHING GREAT Society × Festool</span>
+  </div>
+  <div>Wien · April 2026 · <a href="https://dosomethinggreat.work" target="_blank" rel="noopener">dosomethinggreat.work</a></div>
+</footer>
+
+<script>
+  // subtle reveal-on-scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { rootMargin: '0px 0px -60px 0px', threshold: 0.05 });
+  document.querySelectorAll('section > .container > *, .reel-grid > *, .tier, .cred, .stat-block').forEach(el => {
+    el.classList.add('reveal'); io.observe(el);
+  });
+</script>
+
+</body>
+</html>
